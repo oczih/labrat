@@ -11,11 +11,6 @@ import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.shape.Box;
 
-import main.java.mygame.AssemblyStation;
-import main.java.mygame.Lego;
-import main.java.mygame.LegoBuffer;
-import main.java.mygame.RobotArm;
-
 public class Main extends SimpleApplication {
     public static float floorHeight = -15;
     AssemblyStation station;
@@ -90,32 +85,46 @@ public class Main extends SimpleApplication {
 
         if (!moving && !freeze) {
             if (goingToLego) {
+                // Just arrived at lego buffer, now move to station
                 Vector3f v = station.slotPosition(slotIndex);
                 slotIndex++;
-                station.initMoveToLego(v);
+                station.initMoveToStation(lego, v);
                 goingToLego = false;
                 moving = true;
             } else {
+                // Just placed lego at station, detach it
                 if (lego != null) {
-                    Vector3f loc = lego.node.getWorldTranslation();
-                    lego.node.removeFromParent();
+                    Vector3f loc = lego.node.getWorldTranslation().clone();
+
+                    // Detach from tooltip
+                    if (lego.node.getParent() != null) {
+                        lego.node.removeFromParent();
+                    }
+
+                    // Set position and attach to root
                     lego.node.setLocalTranslation(loc);
-                    lego.node.attachChild(station.node);
+                    rootNode.attachChild(lego.node);
                 }
+
+                // Get next lego of current color
                 lego = legoBuffer.giveLego(colors.get(colorIndex));
-                moving = true;
+
                 if (lego == null) {
+                    // No more legos of current color
                     colorIndex++;
                     if (colorIndex >= numColors) {
                         freeze = true;
                     } else {
-                        colors.get(colorIndex);
+                        // Try next color
+                        lego = legoBuffer.giveLego(colors.get(colorIndex));
                     }
                 }
-                if (!freeze) {
+
+                if (!freeze && lego != null) {
                     station.initMoveToLego(lego);
+                    goingToLego = true;
+                    moving = true;
                 }
-                goingToLego = true;
             }
         }
     }

@@ -4,23 +4,34 @@ import com.jme3.asset.AssetManager;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.FastMath;
+import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.shape.Box;
 import com.jme3.scene.shape.Cylinder;
 
 public class Lego {
-    Node node = new Node();
+    public Node node = new Node();
     Geometry geom;
     Box box;
+    public String color;
+    public Vector3f location; // ADD THIS FIELD - stores the top location where robot picks it up
 
     public Lego(AssetManager assetManager, String color) {
+        this.color = color; // Store the color
+
+        // Note: Your lego dimensions are (0.8f, 0.2f, 0.4f) which means:
+        // width (x): 1.6f total (2 * 0.8f)
+        // height (y): 0.4f total (2 * 0.2f)
+        // depth (z): 0.8f total (2 * 0.4f)
         box = new Box(0.8f, 0.2f, 0.4f);
         geom = new Geometry("Box", box);
         node.attachChild(geom);
+
         Material mat = new Material(assetManager,
                 "Common/MatDefs/Light/Lighting.j3md");
         mat.setBoolean("UseMaterialColors", true);
+
         if (color.equals("green")) {
             mat.setColor("Diffuse", ColorRGBA.Green);
         } else if (color.equals("red")) {
@@ -34,6 +45,7 @@ public class Lego {
         } else {
             mat.setColor("Diffuse", ColorRGBA.DarkGray);
         }
+
         geom.setMaterial(mat);
 
         float boxHalfX = 0.8f;
@@ -42,6 +54,7 @@ public class Lego {
         int rows = 2;
         int cols = 4;
 
+        // Add studs to the lego
         for (int i = 0; i < 8; i++) {
             Cylinder cyl = new Cylinder(20, 20, 0.1f, 0.1f, true);
             Geometry g = new Geometry("Cyl" + i, cyl);
@@ -59,5 +72,6 @@ public class Lego {
             node.attachChild(g);
         }
 
+        // location will be set by LegoBuffer.giveLego() method
     }
 }
