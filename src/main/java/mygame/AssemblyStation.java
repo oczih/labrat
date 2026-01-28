@@ -35,10 +35,14 @@ public class AssemblyStation {
         mat.setBoolean("UseMaterialColors", true);
         mat.setColor("Diffuse", ColorRGBA.LightGray);
         geom.setMaterial(mat);
-        geom.setLocalTranslation(xOffset, Main.floorHeight + yExtent, zOffset);
+
+        // Position the station so its TOP is at working height
+        float stationTopY = Main.floorHeight + (2 * yExtent); // -15 + 12 = -3
+        geom.setLocalTranslation(xOffset, stationTopY - yExtent, zOffset); // Center at -3 - 6 = -9
+
         x = xOffset;
         z = zOffset;
-        surfaceHeight = Main.floorHeight + yExtent;
+        surfaceHeight = stationTopY; // surfaceHeight should be -3 (top of station)
     }
 
     public void initTestMove(Vector3f destination) {
@@ -84,15 +88,17 @@ public class AssemblyStation {
     // tämä palauttaa slotin 3D koordinaatit
     public Vector3f slotPosition(int slot) {
         // vain osa asemasta on varattu tähän tarkoitukseen. Sen koko on 16x12
-        int rowSize = (int) (16 / legoSpacingX);
-        int columnSize = (int) (12 / legoSpacingZ);
+        int rowSize = (int) ((16) / legoSpacingX);
+        int columnSize = (int) ((12) / legoSpacingZ);
         int rowIndex = slot % rowSize;
         float xOffset = (rowIndex - 1) * legoSpacingX;
         int columnIndex = slot / rowSize;
         float zOffset = (columnIndex + 2) * legoSpacingZ;
-        float yOffset = 0.4f; // legon yläpinnan korkeus
-        float legoTopY = surfaceHeight + 0.4f;
-        return new Vector3f(x + xOffset, legoTopY, z + zOffset - 12);
+        float yOffset = 0.4f; // legonyExtent
+        // ’x’ ja ’z’ on float muuttujia, joihin on tallennettu konstruktorin
+        // xOffset/zOffset
+        // laske ’surfaceHeight’ konstruktorissa
+        return new Vector3f(x + xOffset, surfaceHeight + yOffset, z + zOffset - 12);
     }
 
     // APP kohteeseen lego.location

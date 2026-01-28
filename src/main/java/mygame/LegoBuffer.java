@@ -45,9 +45,9 @@ public class LegoBuffer {
         rootNode.attachChild(geom);
 
         // Calculate surface height
-        surfaceHeight = Main.floorHeight + yExtent;
+        surfaceHeight = Main.floorHeight + 2 * yExtent;
 
-        geom.setLocalTranslation(x, surfaceHeight, z);
+        geom.setLocalTranslation(x, surfaceHeight - yExtent, z);
 
         // Create legos in a grid pattern with alternating colors
         for (int i = 0; i < (rowSize * columnSize); i++) {
