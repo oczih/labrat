@@ -1,0 +1,45 @@
+ <InstanceHierarchy Name="InstanceHierarchy">
+ <Version>0</Version>
+ <InternalElement Name="Cell1" ID="b3315917-7b7e-4af4-b9e3-4ffa9b9442f0"
+RefBaseSystemUnitPath="SystemUnitClassLib/Cell">
+ <InternalElement Name="LegoBuffer" ID="8c510577-2edd-4472-aaa5-3301fcfcaebe"
+RefBaseSystemUnitPath="SystemUnitClassLib/LegoBuffer">
+ <Attribute Name="X" AttributeDataType="xs:float">
+ <Value>5</Value>
+ </Attribute>
+ <Attribute Name="Z" AttributeDataType="xs:float">
+ <Value>-29</Value>
+ </Attribute>
+ </InternalElement>
+ <InternalElement Name="AssemblyStation" ID="dd8f5845-dde9-4a2e-acb5-3e6f98ba8cde"
+RefBaseSystemUnitPath="SystemUnitClassLib/AssemblyStation">
+ <Attribute Name="X" AttributeDataType="xs:float">
+ <Value>5</Value>
+ </Attribute>
+ <Attribute Name="Z" AttributeDataType="xs:float">
+ <Value>-11</Value>
+ </Attribute>
+ </InternalElement>
+ </InternalElement>
+ <InternalElement Name="Cell2" ID="c1aa2b7f-1a0a-4708-9a9b-6447b9470a5e"
+RefBaseSystemUnitPath="SystemUnitClassLib/Cell">
+ <InternalElement Name="LegoBuffer" ID="c02d9bf1-33fa-47c4-92da-0e0380b96ade"
+RefBaseSystemUnitPath="SystemUnitClassLib/LegoBuffer">
+ <Attribute Name="X" AttributeDataType="xs:float">
+ <Value>15</Value>
+ </Attribute>
+ <Attribute Name="Z" AttributeDataType="xs:float">
+ <Value>-29</Value>
+ </Attribute>
+ </InternalElement>
+ <InternalElement Name="AssemblyStation" ID="1ba5bd8b-935b-475a-b99e-3574ffb5ed0c"
+RefBaseSystemUnitPath="SystemUnitClassLib/AssemblyStation">
+ <Attribute Name="X" AttributeDataType="xs:float">
+ <Value>15</Value>
+ </Attribute>
+ <Attribute Name="Z" AttributeDataType="xs:float">
+ <Value>-11</Value>
+ </Attribute>
+ </InternalElement>
+ </InternalElement>
+ </InstanceHierarchy>

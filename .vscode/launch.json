@@ -6,6 +6,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LegoReader",
+            "request": "launch",
+            "mainClass": "LegoReader"
+        },
+        {
+            "type": "java",
             "name": "AutomationMLReader_skeleton",
             "request": "launch",
             "mainClass": "AutomationMLReader_skeleton"
