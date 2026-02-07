@@ -6,6 +6,19 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AutomationMLReader_skeleton",
+            "request": "launch",
+            "mainClass": "AutomationMLReader_skeleton"
+        },
+        {
+            "type": "java",
+            "name": "AutomationMLReader_skeleton",
+            "request": "launch",
+            "mainClass": "main.java.mlreader.AutomationMLReader_skeleton",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "XMLtuotantosolu",
             "request": "launch",
             "mainClass": "xml.XMLtuotantosolu"

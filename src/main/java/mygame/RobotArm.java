@@ -65,7 +65,7 @@ public class RobotArm {
         mast.setLocalTranslation(-8f, 0f, -10f);
 
         Box zBox = new Box(0.2f, 0.2f, 20f);
-.
+
         zArm = new Geometry("zArm", zBox);
 
         zArm.setMaterial(mat);

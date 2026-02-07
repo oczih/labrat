@@ -48,7 +48,7 @@ public class Main extends SimpleApplication {
 
     int index = 0;
 
-    boolean mode = true;
+    boolean mode = false;
 
     ArrayList<String> colors = new ArrayList<>(numColors);
 
